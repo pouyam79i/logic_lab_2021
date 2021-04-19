@@ -6,9 +6,9 @@
 --  *******************************************************
 --  All Rights reserved (C) 2019-2020
 --  *******************************************************
---  Student ID  : 
---  Student Name: 
---  Student Mail: 
+--  Student ID  : 9829039	
+--  Student Name: Pouya Mohammadi
+--  Student Mail: pouyamohammadyirbu@gmail.com
 --  *******************************************************
 --  Additional Comments:
 --
@@ -26,8 +26,17 @@ module paritiy3_gen (
 	input c,
 	output f	
 );
-	/* write your code here */
 	
-	/* write your code here */
+	table
+//	a  b  c : f
+	0  0  0 : 1
+	0  0  1 : 0
+	0  1  0 : 0
+	0  1  1 : 1
+	1  0  0 : 0
+	1  0  1 : 1
+	1  1  0 : 1
+	1  1  1 : 0
+	endtable
 
 endmodule

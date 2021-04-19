@@ -6,9 +6,9 @@
 --  *******************************************************
 --  All Rights reserved (C) 2019-2020
 --  *******************************************************
---  Student ID  : masoud
---  Student Name: 
---  Student Mail: 
+--  Student ID  : 9829039	
+--  Student Name: Pouya Mohammadi
+--  Student Mail: pouyamohammadyirbu@gmail.com
 --  *******************************************************
 --  Additional Comments:
 --
@@ -26,8 +26,19 @@ module paritiy3_gen_sop (
 	input c,
 	output f	
 );
-	/* write your code here */
 	
-	/* write your code here */
+	wire w, x, y, z
+	wire aNot, bNot, cNot
+
+	not gNotA(aNot, a)
+	not gNotB(bNot, b)
+	not gNotC(cNot, c)
+
+	and gAnd1(w, aNot, bNot, cNot)
+	and gAnd1(x, aNot, b, c)
+	and gAnd1(y, a, bNot, c)
+	and gAnd1(z, a, b, cNot)
+
+	or gOr(f, w, x, y, z)
 
 endmodule
