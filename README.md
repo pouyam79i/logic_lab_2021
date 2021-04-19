@@ -42,7 +42,7 @@ AUT Logic Circuits Laboratory Material and Template Sources
 
 [6] set branch remote to private repository like CEIT Gitlab (`git push -u https://git.ce.aut.ac.ir/XYZ lab-xx`)
 
+<br>
 
-
-This Repo is edited by Pouya Mohammadi
+This Repo is edited by Pouya Mohammadi <br>
 CE@AUT - Uni ID: 9829039 
