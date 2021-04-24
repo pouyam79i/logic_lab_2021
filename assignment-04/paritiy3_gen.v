@@ -27,16 +27,6 @@ module paritiy3_gen (
 	output f	
 );
 	
-	table
-//	a  b  c : f
-	0  0  0 : 1
-	0  0  1 : 0
-	0  1  0 : 0
-	0  1  1 : 1
-	1  0  0 : 0
-	1  0  1 : 1
-	1  1  0 : 1
-	1  1  1 : 0
-	endtable
+	xnor gate(f, a, b, c);
 
 endmodule

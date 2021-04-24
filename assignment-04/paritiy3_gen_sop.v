@@ -27,18 +27,18 @@ module paritiy3_gen_sop (
 	output f	
 );
 	
-	wire w, x, y, z
-	wire aNot, bNot, cNot
+	wire w, x, y, z;
+	wire aNot, bNot, cNot;
 
-	not gNotA(aNot, a)
-	not gNotB(bNot, b)
-	not gNotC(cNot, c)
+	not gNotA(aNot, a);
+	not gNotB(bNot, b);
+	not gNotC(cNot, c);
 
-	and gAnd1(w, aNot, bNot, cNot)
-	and gAnd1(x, aNot, b, c)
-	and gAnd1(y, a, bNot, c)
-	and gAnd1(z, a, b, cNot)
+	and gAnd1(w, aNot, bNot, cNot);
+	and gAnd2(x, aNot, b, c);
+	and gAnd3(y, a, bNot, c);
+	and gAnd4(z, a, b, cNot);
 
-	or gOr(f, w, x, y, z)
+	or gOr(f, w, x, y, z);
 
 endmodule
