@@ -23,25 +23,21 @@
 module multiplexer4x1 (
 	input [3:0] w ,
 	input [1:0]	sel ,
-	output y
+	output [3:0] y
 );
 	
 	// wires to connect
 	wire [1:0] notSel;
-	wire [3:0] connector;
 	
 	// Not gates
 	not gNots0(notSel[0], sel[0]);
 	not gNots1(notSel[1], sel[1]);
 	
 	// Minterms
-	and m0(connector[0], w[0], notSel[1], notSel[0]); 
-	and m1(connector[1], w[1], notSel[1], sel[0]); 
-	and m2(connector[2], w[2], sel[1], notSel[0]); 
-	and m3(connector[3], w[3], sel[1], sel[0]); 
+	and m0(y[0], w[0], notSel[1], notSel[0]); 
+	and m1(y[1], w[1], notSel[1], sel[0]); 
+	and m2(y[2], w[2], sel[1], notSel[0]); 
+	and m3(y[3], w[3], sel[1], sel[0]); 
 	
-	// Or gate to produce SoP for output
-	or outputGate(y, connector[0], connector[1], connector[2], connector[3]);
-
 endmodule
 
