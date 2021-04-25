@@ -6,9 +6,9 @@
 --  *******************************************************
 --  All Rights reserved (C) 2019-2020
 --  *******************************************************
---  Student ID  : 
---  Student Name: 
---  Student Mail: 
+--  Student ID  : 9829039	
+--  Student Name: Pouya Mohammadi
+--  Student Mail: pouyamohammadyirbu@gmail.com
 --  *******************************************************
 --  Additional Comments:
 --
@@ -23,11 +23,11 @@
 
 module tb_multiplexer ();
 
-wire [3:0] w;
-wire [1:0] sel;
-wire [3:0] y;
+reg [3:0] w;
+reg [1:0] sel;
+wire y;
 	
-	multiplexer4x1 test_multiplexer4x1 (.w(w), .sel(sel), .y(y));
+	multiplexer4x1 test_multiplexer4x1 (.w(w), .sel(sel), .y);
 
 
 	initial 
