@@ -6,9 +6,9 @@
 --  *******************************************************
 --  All Rights reserved (C) 2019-2020
 --  *******************************************************
---  Student ID  : 
---  Student Name: 
---  Student Mail: 
+--  Student ID  : 9829039	
+--  Student Name: Pouya Mohammadi
+--  Student Mail: pouyamohammadyirbu@gmail.com
 --  *******************************************************
 --  Additional Comments:
 --
@@ -24,8 +24,16 @@ module encoder4x2 (
 	input [3:0] din ,
 	output [1:0] qout	
 );
-	/* write your code here */
 	
-	/* write your code here */
+	// Wires
+	wire notDin2, onlyAndGate;
+	
+	// Pripheral gates
+	not gNot(notDin2, din[2]);
+	and gAnd(onlyAndGate, notDin2, din[1]);
+	
+	// Outputs
+	or gOr0(qout[0], onlyAndGate, din[3]);
+	or gOr1(qout[1], din[2], din[3]);
 
 endmodule
