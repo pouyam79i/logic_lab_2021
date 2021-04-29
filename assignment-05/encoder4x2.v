@@ -11,12 +11,19 @@
 --  Student Mail: pouyamohammadyirbu@gmail.com
 --  *******************************************************
 --  Additional Comments:
+<<<<<<< HEAD
 -- I am Mehran
 <<<<<<< HEAD
 -- ksfjnlksfjnwlekfnwlekfnwl;ekfknwlefknwwefklvlfrr
 =======
 -- This is Pouya
 >>>>>>> ede9d38af21704bd4c967fa2b26104fd6855f61a
+=======
+-- 
+--	Teamate information:
+--	Mehran Aksari
+--	9831007
+>>>>>>> 23ed48db58eea77c9a413f3d8e3d6596e9e22e5b
 --*/
 
 /*-----------------------------------------------------------

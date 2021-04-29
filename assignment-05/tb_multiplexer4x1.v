@@ -11,8 +11,10 @@
 --  Student Mail: pouyamohammadyirbu@gmail.com
 --  *******************************************************
 --  Additional Comments:
---  i am mehran 
 --
+--	Teamate information:
+--	Mehran Aksari
+--	9831007
 --*/
 
 /*-----------------------------------------------------------
@@ -26,9 +28,9 @@ module tb_multiplexer ();
 
 reg [3:0] w;
 reg [1:0] sel;
-wire y;
+wire [3:0] y;
 	
-	multiplexer4x1 test_multiplexer4x1 (.w(w), .sel(sel), .y);
+	multiplexer4x1 test_multiplexer4x1 (.w(w), .sel(sel), .y(y));
 
 
 	initial 
