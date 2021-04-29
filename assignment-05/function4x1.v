@@ -27,8 +27,26 @@ module function4x1 (
 	input d ,
 	output f
 );
-	/* write your code here */
+
+	// wires
+	wire [3:0] in;
+	wire [15:0] dout;
+	wire en;
 	
-	/* write your code here */
+	// Assigning input pins to 'in' array
+	assign in[0] = a;
+	assign in[1] = b;
+	assign in[2] = c;
+	assign in[3] = d;
+
+	// en must be '1' so the decoder4x16 can operate
+	assign en = 1'b1;
+
+	// Getting dout, which contains all minterms from decoder!
+	decoder4x16 myDecoder(.in(in), .en(en), .dout(dout));
+
+	// having a or gate for all minterms
+	or resultGate(f, dout[2], dout[3], dout[5], dout[7], dout[11], dout[13]);
+
 
 endmodule
