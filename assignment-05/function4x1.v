@@ -37,10 +37,10 @@ module function4x1 (
 	wire en;
 	
 	// Assigning input pins to 'in' array
-	assign in[0] = a;
-	assign in[1] = b;
-	assign in[2] = c;
-	assign in[3] = d;
+	assign in[0] = d;
+	assign in[1] = c;
+	assign in[2] = b;
+	assign in[3] = a;
 
 	// en must be '1' so the decoder4x16 can operate
 	assign en = 1'b1;
