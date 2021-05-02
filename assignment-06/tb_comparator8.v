@@ -1,48 +1,73 @@
-/*--  *******************************************************
---  Computer Architecture Course, Laboratory Sources 
---  Amirkabir University of Technology (Tehran Polytechnic)
---  Department of Computer Engineering (CE-AUT)
---  https://ce[dot]aut[dot]ac[dot]ir
---  *******************************************************
---  All Rights reserved (C) 2019-2020
---  *******************************************************
---  Student ID  : 9829039	
---  Student Name: Pouya Mohammadi
---  Student Mail: pouyamohammadyirbu@gmail.com
---  *******************************************************
---  Additional Comments:
---
---	Teamate information:
---	Mehran Aksari
---	9831007
---*/
+`timescale 1ns / 1ps
 
-/*-----------------------------------------------------------
----  Module Name: 8 Bit Comparator Testbench
----  Description: Lab 06 Part 2 Testbench
------------------------------------------------------------*/
-`timescale 1 ns/1 ns
+////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer:
+//
+// Create Date:   15:12:14 11/16/2020
+// Design Name:   comparator8
+// Module Name:   C:/Users/Asus/Desktop/ISE/comp/tb_comp8bit.v
+// Project Name:  comp
+// Target Device:  
+// Tool versions:  
+// Description: 
+//
+// Verilog Test Fixture created by ISE for module: comparator8
+//
+// Dependencies:
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+////////////////////////////////////////////////////////////////////////////////
 
+module tb_comparator8();
 
-module tb_comparator8 ();
+	// Inputs
+	reg [7:0] A;
+	reg [7:0] B;
+	reg l;
+	reg e;
+	reg g;
 
-reg [7:0] A;
-reg [7:0] B;
-reg l;
-reg e;
-reg g;
-wire lt;
-wire et;
-wire gt;
+	// Outputs
+	wire lt;
+	wire et;
+	wire gt;
 
-	comparator8 test_comparator8 (.A(A), .B(B), .l(l), .e(e), .g(g), .lt(lt), .et(et), .gt(gt));
+	// Instantiate the Unit Under Test (UUT)
+	comparator8 uut (
+		.A(A), 
+		.B(B), 
+		.l(l), 
+		.e(e), 
+		.g(g), 
+		.lt(lt), 
+		.et(et), 
+		.gt(gt)
+	); 
 
-
-	initial 
-		begin
+	initial begin
 		
-		// write your code here
-		
+		A = 8'b11010001; B = 8'b11111111; l = 0; e = 1; g = 0;
+		#100;
+		A = 8'b11111111; B = 8'b01111111; l = 0; e = 1; g = 0;
+		#100;
+		A = 8'b00110101; B = 8'b01101010; l = 0; e = 1; g = 0;
+		#100;
+		A = 8'b11010011; B = 8'b10011111; l = 0; e = 1; g = 0;
+		#100;
+		A = 8'b11111000; B = 8'b11010111; l = 0; e = 1; g = 0;
+		#100;
+		A = 8'b11111111; B = 8'b11111111; l = 0; e = 1; g = 0;
+		#100;
+		A = 8'b00010000; B = 8'b00001000; l = 0; e = 1; g = 0;
+		#100;
+
+
 	end
-
+      
 endmodule
+
+
