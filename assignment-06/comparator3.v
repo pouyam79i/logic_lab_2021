@@ -63,7 +63,7 @@ module comparator3 (
 	wire [2:0] A_GT_B_Holders;
 	and gAndA_GT_B_2      (A_GT_B_Holders[2], A[2], notB[2]);
 	and gAndA_GT_B_1	  (A_GT_B_Holders[1], A[1], notB[1], xNorOutput[2]);
-	and gAndA_GT_B_0	  (A_GT_B_Holders[2], A[0], notB[0], xNorOutput[2], xNorOutput[1]);
+	and gAndA_GT_B_0	  (A_GT_B_Holders[0], A[0], notB[0], xNorOutput[2], xNorOutput[1]);
 	or  A_GT_B_resultGate (A_GT_B_Output, A_GT_B_Holders[2], A_GT_B_Holders[1], A_GT_B_Holders[0]);
 
 	// A_LT_B circuit
@@ -71,7 +71,7 @@ module comparator3 (
 	wire [2:0] A_LT_B_Holders;
 	and gAndA_LT_B_2	  (A_LT_B_Holders[2], notA[2], B[2]);
 	and gAndA_LT_B_1	  (A_LT_B_Holders[1], notA[1], B[1], xNorOutput[2]);
-	and gAndA_LT_B_0	  (A_LT_B_Holders[2], notA[0], B[0], xNorOutput[2], xNorOutput[1]);
+	and gAndA_LT_B_0	  (A_LT_B_Holders[0], notA[0], B[0], xNorOutput[2], xNorOutput[1]);
 	or  A_LT_B_resultGate (A_LT_B_Output, A_LT_B_Holders[2], A_LT_B_Holders[1], A_LT_B_Holders[0]);
 
 	// Cascading circuit
@@ -89,7 +89,7 @@ module comparator3 (
 	and check_Gt(handler_Gt_to_cGt, notEqultHandler, A_GT_B_Output);
 
 	// ***  final output of the IC ***
-	assign eq = cEq;					// Output of eq
+	assign et = cEq;					// Output of et
 	or(lt, cLt, handler_Lt_to_cLt);		// Output of lt
 	or(gt, cGt, handler_Gt_to_cGt);		// Output of gt
 
