@@ -25,13 +25,12 @@
 
 module tb_comparator8();
 
-	// Inputs
+	// Regs
 	reg [7:0] A;
 	reg [7:0] B;
 	reg l;
 	reg e;
 	reg g;
-
 	// Outputs
 	wire lt;
 	wire et;

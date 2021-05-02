@@ -49,6 +49,4 @@ module comparator8 (
 	comparator3 com2(A[5:3],B[5:3],l1,e1,g1,l2,e2,g2);
 	comparator3	com3(inA[2:0],inB[2:0],l2,e2,g2,lt,et,gt);
 	
-					
-	
 endmodule
