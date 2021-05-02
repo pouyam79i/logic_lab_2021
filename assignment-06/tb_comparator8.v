@@ -18,8 +18,8 @@
 --*/
 
 /*-----------------------------------------------------------
----  Module Name: 3 Bits Comparator Gate Level
----  Description: Lab 06 Part 1
+---  Module Name: 8 Bit Comparator Testbench
+---  Description: Lab 06 Part 2 Testbench
 -----------------------------------------------------------*/
 `timescale 1ns / 1ns
 
