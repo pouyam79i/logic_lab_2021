@@ -31,8 +31,16 @@ module full_adder (
 	output co
 );
 
-	/* write your code here */
-	
-	/* write your code here */
+	// Sum
+	wire xi;
+	xor abXor(xi, a, b);
+	xor sum(s, ci, xi);
+
+	// Carry out
+	wire o1, p1, p2;
+	or abOr(o1, a, b);
+	and ocAnd(p1, o1, ci);
+	and abAnd(p2, a, b);
+	or carryOut(co, p1, p2);
 
 endmodule
