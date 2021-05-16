@@ -44,3 +44,4 @@ module full_adder (
 	or carryOut(co, p1, p2);
 
 endmodule
+
