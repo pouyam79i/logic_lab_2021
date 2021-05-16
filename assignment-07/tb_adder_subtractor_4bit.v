@@ -26,22 +26,26 @@
 
 module tb_adder_subtractor_4bit ();
 
-reg [3:0] A;
-reg [3:0] B;
-reg sel;
+	// regs
+	reg [3:0] A;
+	reg [3:0] B;
+	reg sel;
 
-wire [3:0] sum;
-wire [3:0] sum_delay;
-wire cout;
-wire cout_delay;
+	// wires
+	wire [3:0] sum;
+	wire [3:0] sum_delay;
+	wire cout;
+	wire cout_delay;
 
+	// building from adder_subtractor_4bit module 
 	adder_subtractor_4bit test_adder_subtractor_4bit (.A(A), .B(B), .sel(sel), .S(sum), .cout(cout));
-	adder_subtractor_4bit test_adder_subtractor_4bit_delay (.A(A), .B(B), .sel(sel), .S(sum_delay), .cout(cout_delay));
 
+	// building from adder_subtractor_4bit_delay module
+	adder_subtractor_4bit_delay test_adder_subtractor_4bit_delay (.A(A), .B(B), .sel(sel), .S(sum_delay), .cout(cout_delay));
 
+	// Initialize Inputs
 	initial 
 		begin
-	// Initialize Inputs
 		// A>0 & B>0 & add
 		A =1;
 		B = 2;
@@ -100,10 +104,6 @@ wire cout_delay;
 		Sell = 1;
 		#200;		
 		$finish;
-
-		
-		
-		
 	end
 
 endmodule
