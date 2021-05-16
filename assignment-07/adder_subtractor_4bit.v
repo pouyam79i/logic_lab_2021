@@ -31,8 +31,11 @@ module adder_subtractor_4bit (
 	output cout
 );
 
-	/* write your code here */
 	
-	/* write your code here */
+		wire c1,c2,c3;
+		addsub add1(A[0],B[0],Sell,Sell,S[0],c1);
+		addsub add2(A[1],B[1],Sell,c1,S[1],c2);
+		addsub add3(A[2],B[2],Sell,c2,S[2],c3);
+		addsub add4(A[3],B[3],Sell,c3,S[3],Cout);
 
 endmodule
