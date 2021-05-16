@@ -39,7 +39,7 @@ module add_sub_delay (
 	// Sum
 	wire xi;
 	xor #10 abXor(xi, a, bc);
-	xor #10 sum(sum, cin, xi);
+	xor #10 sumXor(sum, cin, xi);
 
 	// Carry out
 	wire o1, p1, p2;

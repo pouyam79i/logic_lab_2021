@@ -39,7 +39,7 @@ module add_sub (
 	// Sum
 	wire xi;
 	xor abXor(xi, a, bc);
-	xor sum(sum, cin, xi);
+	xor sumXor(sum, cin, xi);
 
 	// Carry out
 	wire o1, p1, p2;
