@@ -46,63 +46,30 @@ module tb_adder_subtractor_4bit ();
 	// Initialize Inputs
 	initial 
 		begin
-		// A>0 & B>0 & add
-		A = 1;
-		B = 2;
-		sel = 0;
-		#200;
-		A = 2;
-		B = 3;
-		sel = 0;
-		#200;
-		A = 10;
-		B = 12;
-		sel = 0;
-		#200;
 		A = 5;
-		B = 6;
+		B = 10;
 		sel = 0;
-		#200;
-		// A>0 & B>0 & Subtract
+		#100;
 		A = 5;
-		B = 2;
+		B = 10;
 		sel = 1;
-		#200;
-		A = 2;
+		#100;
+		A = 10;
+		B = 10;
+		sel = 0;
+		#100;
+		A = 10;
+		B = 10;
+		sel = 1;
+		#100;
+		A = 10;
+		B = 5;
+		sel = 0;
+		#100;
+		A = 10;
 		B = 5;
 		sel = 1;
-		#200;
-		A = 4;
-		B = 4;
-		sel = 1;
-		#200;
-		//A<0 & B>0 & add & subtract
-		A = -5;
-		B = 2;
-		sel = 0;
-		#200;
-		A = -3;
-		B = 2;
-		sel = 1;
-		#200;		
-		//A>0 & B<0 & add & subtract
-		A = 5;
-		B = -2;
-		sel = 0;
-		#200;		
-		A = 5;
-		B = -2;
-		sel = 1;
-		#200;
-		//A<0 & B<0 & add & subtract
-		A = -5;
-		B = -2;
-		sel = 0;
-		#200;		
-		A = -5;
-		B = -2;
-		sel = 1;
-		#200;		
+		#100;
 		$finish;
 	end
 
