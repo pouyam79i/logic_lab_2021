@@ -41,8 +41,68 @@ wire cout_delay;
 
 	initial 
 		begin
+	// Initialize Inputs
+		// A>0 & B>0 & add
+		A =1;
+		B = 2;
+		Sell = 0;
+		#200;
+		A = 2;
+		B = 3;
+		Sell = 0;
+		#200;
+		A = 10;
+		B = 12;
+		Sell = 0;
+		#200;
+		A = 5;
+		B = 6;
+		Sell = 0;
+		#200;
+		// A>0 & B>0 & Subtract
+		A = 5;
+		B = 2;
+		Sell = 1;
+		#200;
+		A = 2;
+		B = 5;
+		Sell = 1;
+		#200;
+		A = 4;
+		B = 4;
+		Sell = 1;
+		#200;
+		//A<0 & B>0 & add & subtract
+		A = -5;
+		B = 2;
+		Sell = 0;
+		#200;
+		A = -3;
+		B = 2;
+		Sell = 1;
+		#200;		
+		//A>0 & B<0 & add & subtract
+		A = 5;
+		B = -2;
+		Sell = 0;
+		#200;		
+		A = 5;
+		B = -2;
+		Sell = 1;
+		#200;
+		//A<0 & B<0 & add & subtract
+		A = -5;
+		B = -2;
+		Sell = 0;
+		#200;		
+		A = -5;
+		B = -2;
+		Sell = 1;
+		#200;		
+		$finish;
+
 		
-		// write your code here
+		
 		
 	end
 
