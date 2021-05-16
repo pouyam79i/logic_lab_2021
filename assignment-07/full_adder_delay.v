@@ -31,8 +31,16 @@ module full_adder_delay (
 	output co
 );
 
-	/* write your code here */
-	
-	/* write your code here */
+	// Sum
+	wire xi;
+	xor #10 abXor(xi, a, b);
+	xor #10 sum(s, ci, xi);
+
+	// Carry out
+	wire o1, p1, p2;
+	or  #5 abOr(o1, a, b);
+	and #5 ocAnd(p1, o1, ci);
+	and #5 abAnd(p2, a, b);
+	or  #5 carryOut(co, p1, p2);
 
 endmodule
