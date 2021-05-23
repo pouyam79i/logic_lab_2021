@@ -30,10 +30,25 @@ module alu (
 	output [3:0] Y
 );
 
-	/* write your code here */
+	// container wires
+	wire [3:0] sumOut;
+	wire [3:0] mulOut;
+	wire [3:0] nndOut;
+	wire [3:0] invOut;
+
+	// 2-bit adder module - AU
+	adder_2bit adderM(A, B, sumOut);
+
+	// 2-bit multiplier module - AU
+	multiplier_2bit mulM(A, B, mulOut);
 	
+	// 2-bit nand module - LU
+	nand_2bit nandM(A, B, nndOut);
 
-	/* write your code here */
+	// 2-bit inverter module - LU
+	inverter_2bit invM(A, invOut);
 
-	// use multiplexer4x4 here
+	// Using 4-bit Mux 4:1 to handle the output
+	multiplexer4x4 muxM(invOut, nndOut, sumOut, mulOut, sel, Y);
+
 endmodule
