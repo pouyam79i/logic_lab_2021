@@ -18,30 +18,22 @@
 --*/
 
 /*-----------------------------------------------------------
----  Module Name: Multiplexer 4bit 4 to 1
----  Description: Lab 08 Part 1
+---  Module Name: Two bit Not ---> 4bit output
+---  Description: Lab 08
 -----------------------------------------------------------*/
 `timescale 1 ns/1 ns
 
-module multiplexer4x4 (
-	input [3:0] w3 ,
-	input [3:0] w2 ,
-	input [3:0] w1 ,
-	input [3:0] w0 ,
-	input [1:0]	sel ,
-	output [3:0] y
-); 
-   
-    // regs
-    reg [3:0] y;
+module inverter_2bit (
+	input [1:0] a,
+	output [3:0] out
+);
 
-    // directing output to related input
-	always @ (w3 or w2 or w1 or w0 or sel) 
-	case (sel)
-        2'b00: y = w0;
-		2'b01: y = w1;
-		2'b10: y = w2;
-		2'b11: y = w3;
-	endcase
-		
+    // nand gates
+    not nG0(out[0], a[0]);
+    not nG1(out[1], a[1]);
+
+    // assing useless wires to a
+    assign out[2] = a[0];
+    assign out[3] = a[1];
+
 endmodule
