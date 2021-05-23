@@ -23,7 +23,7 @@
 -----------------------------------------------------------*/
 `timescale 1 ns/1 ns
 
-module adder_2bit (
+module inverter_2bit (
 	input [1:0] a,
 	output [3:0] out
 );

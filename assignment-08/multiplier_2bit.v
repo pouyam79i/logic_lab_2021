@@ -23,7 +23,7 @@
 -----------------------------------------------------------*/
 `timescale 1 ns/1 ns
 
-module adder_2bit (
+module multiplier_2bit (
 	input [1:0] a,
 	input [1:0] b,
 	output [3:0] mul
