@@ -32,8 +32,8 @@ module adder_2bit (
     not nG0(out[0], a[0]);
     not nG1(out[1], a[1]);
 
-    // assing useless wires to 1'b1
-    assign out[2] = 1'b1;
-    assign out[3] = 1'b1;
+    // assing useless wires to a
+    assign out[2] = a[0];
+    assign out[3] = a[1];
 
 endmodule
