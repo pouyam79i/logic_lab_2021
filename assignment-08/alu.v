@@ -49,6 +49,6 @@ module alu (
 	inverter_2bit invM(A, invOut);
 
 	// Using 4-bit Mux 4:1 to handle the output
-	multiplexer4x4 muxM(invOut, nndOut, sumOut, mulOut, sel, Y);
+	multiplexer4x4 muxM(mulOut, sumOut, nndOut, invOut, sel, Y);
 
 endmodule

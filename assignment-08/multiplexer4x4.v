@@ -36,12 +36,12 @@ module multiplexer4x4 (
     reg [3:0] y;
 
     // directing output to related input
-	always @ (w0 or w1 or w2 or w3 or sel) 
+	always @ (w3 or w2 or w1 or w0 or sel) 
 	case (sel)
-        2'b00: y = w0
-		2'b01: y = w1
-		2'b10: y = w2
-		2'b11: y = w3
+        2'b00: y = w0;
+		2'b01: y = w1;
+		2'b10: y = w2;
+		2'b11: y = w3;
 	endcase
 		
 endmodule

@@ -40,7 +40,7 @@ module multiplier_2bit (
     and andGate3(container[2], a[1], b[1]);
     
     // full adders
-    full_adder(container[0], container[1], 1'b0, mul[1], carry);
-    full_adder(container[2], carry, 1'b0, mul[2], mul[3]);
+    full_adder(container[0], container[1], (1'b0), mul[1], carry);
+    full_adder(container[2], carry, (1'b0), mul[2], mul[3]);
 
 endmodule

@@ -33,7 +33,7 @@ module adder_2bit (
     wire C1;
     
     // 2-bit adder with 4-bit output.
-    full_adder fa1(a[0], b[0], 1'b0, sum[0], C1);
+    full_adder fa1(a[0], b[0], (1'b0), sum[0], C1);
     full_adder fa2(a[1], b[1], C1, sum[1], sum[2]);
     assign sum[3] = 1'b0;
     
