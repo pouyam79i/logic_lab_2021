@@ -33,8 +33,8 @@ module adder_2bit (
     nand ndG0(out[0], a[0], b[0]);
     nand ndG1(out[1], a[1], b[1]);
 
-    // assing useless wires to 1'b0
-    assign out[2] = 1'b0;
-    assign out[3] = 1'b0;
+    // assing useless wires to and gates
+    and adG0(out[2], a[0], b[0]);
+    and adG1(out[3], a[1], b[1]);
 
 endmodule
