@@ -18,30 +18,31 @@
 --*/
 
 /*-----------------------------------------------------------
----  Module Name: Multiplexer 4bit 4 to 1
----  Description: Lab 08 Part 1
+---  Module Name: Full Adder Gate Level
+---  Description: Lab 07 Part 1
 -----------------------------------------------------------*/
 `timescale 1 ns/1 ns
 
-module multiplexer4x4 (
-	input [3:0] w3 ,
-	input [3:0] w2 ,
-	input [3:0] w1 ,
-	input [3:0] w0 ,
-	input [1:0]	sel ,
-	output [3:0] y
-); 
-   
-    // regs
-    reg [3:0] y;
+module full_adder (
+	input a,
+	input b,
+	input ci,
+	output s,
+	output co
+);
 
-    // directing output to related input
-	always @ (w3 or w2 or w1 or w0 or sel) 
-	case (sel)
-        2'b00: y = w0;
-		2'b01: y = w1;
-		2'b10: y = w2;
-		2'b11: y = w3;
-	endcase
-		
+	// Sum
+	wire xi;
+	xor abXor(xi, a, b);
+	xor sum(s, ci, xi);
+
+	// Inside wires
+	wire o1, p1, p2;
+
+	// Used gates
+	or  abOr(o1, a, b);
+	and ocAnd(p1, o1, ci);
+	and abAnd(p2, a, b);
+	or  carryOut(co, p1, p2);
+
 endmodule

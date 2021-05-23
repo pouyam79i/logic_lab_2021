@@ -18,30 +18,23 @@
 --*/
 
 /*-----------------------------------------------------------
----  Module Name: Multiplexer 4bit 4 to 1
----  Description: Lab 08 Part 1
+---  Module Name: Two bit adder
+---  Description: Lab 08
 -----------------------------------------------------------*/
 `timescale 1 ns/1 ns
 
-module multiplexer4x4 (
-	input [3:0] w3 ,
-	input [3:0] w2 ,
-	input [3:0] w1 ,
-	input [3:0] w0 ,
-	input [1:0]	sel ,
-	output [3:0] y
-); 
-   
-    // regs
-    reg [3:0] y;
+module adder_2bit (
+	input [1:0] a,
+	input [1:0] b,
+	output [3:0] sum
+);
 
-    // directing output to related input
-	always @ (w3 or w2 or w1 or w0 or sel) 
-	case (sel)
-        2'b00: y = w0;
-		2'b01: y = w1;
-		2'b10: y = w2;
-		2'b11: y = w3;
-	endcase
-		
+    // wires
+    wire C1;
+    
+    // 2-bit adder with 4-bit output.
+    full_adder fa1(a[0], b[0], (1'b0), sum[0], C1);
+    full_adder fa2(a[1], b[1], C1, sum[1], sum[2]);
+    assign sum[3] = 1'b0;
+    
 endmodule
