@@ -8,7 +8,7 @@
 
 AUT Logic Circuits Laboratory Material and Template Sources
 
-<!-- ## Assignments Quick Link
+## Assignments Quick Link
 
 * [**:pencil2: Lab-04**](https://github.com/masoudem/logic_lab_2021/tree/main/assignment-04)
 * [**:pencil2: Lab-05**](https://github.com/masoudem/logic_lab_2021/tree/main/assignment-05)
@@ -16,7 +16,7 @@ AUT Logic Circuits Laboratory Material and Template Sources
 * [**:pencil2: Lab-07**](https://github.com/masoudem/logic_lab_2021/tree/main/assignment-07)
 * [**:pencil2: Lab-08**](https://github.com/masoudem/logic_lab_2021/tree/main/assignment-08)
 * [**:pencil2: Lab-09**](https://github.com/masoudem/logic_lab_2021/tree/main/assignment-09)
-* [**:pencil2: Lab-10**](https://github.com/masoudem/logic_lab_2021/tree/main/assignment-10) -->
+* [**:pencil2: Lab-10**](https://github.com/masoudem/logic_lab_2021/tree/main/assignment-10)
 
 ## Videos Link
 
