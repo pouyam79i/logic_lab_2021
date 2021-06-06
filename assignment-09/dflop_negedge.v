@@ -30,10 +30,22 @@ module dflop (
 	output qout ,
 	output qbout
 );
+	// defining outputs as reg
+	reg qout, qbout;
 
-	/* write your code here */
-	
-	/* write your code here */
+	// D-FF main code
+	initial begin
+		always @ (negedge clk or posedge rst)
+		if (rst == 1'b1) 
+			begin
+			qout  <= 1'b0;
+			qbout <= 1'b0;
+			end
+		else
+			begin
+			qout  <= din;
+			qbout <= ~din;
+			end
+	end
 
 endmodule
-
