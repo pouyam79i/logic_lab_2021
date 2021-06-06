@@ -32,9 +32,29 @@ module seq_circuit (
 	output z
 );
 
-	/* write your code here */
+	// wires used in C. in
+	wire andIn, orIn, xnorIn;
+	// wires used for present state q and qbout
+	wire qout1, qout2, qbout1, qbout2;
+	// wires used in C. out
+	wire andOut, orOut;
 	
-	/* write your code here */
+	// C. in 
+	or	(orIn, a, andIn);
+	and (andIn, b, qbout2);
+	xnor(xnorIn, orIn, qbout1);
+
+	// Registers (DFFs)
+	dflop dff1(rst, clk, orIn, qout1, qbout1);
+	dflop dff2(rst, clk, xnorIn, qout2, qbout2);
+
+	// C. out 
+	or (orOut, qbout1, andOut);
+	and(andOut, qbout2, b);
+
+	// Outputs
+	assign 
+		y = qout1,
+		z = orOut;
 
 endmodule
-
