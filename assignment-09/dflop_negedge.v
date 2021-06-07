@@ -39,10 +39,11 @@ module dflop (
 		if (rst == 1'b1) 
 			begin
 			qout  <= 1'b0;
-			qbout <= 1'b0;
+			qbout <= 1'b1;
 			end
 		else
 			begin
+			#5;
 			qout  <= din;
 			qbout <= ~din;
 			end
