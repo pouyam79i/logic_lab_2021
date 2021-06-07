@@ -36,14 +36,7 @@ module tb_seq_circuit ();
 	wire z;
 
 	// Instantiating Unit Under Test
-	seq_circuit uut (
-		.rst(rst), 
-		.clk(clk), 
-		.a(a), 
-		.b(b), 
-		.y(y), 
-		.z(z),
-	);
+	seq_circuit uut (rst, clk, a, b, y, z);
 
 	// Building the clock generator
 	initial begin
