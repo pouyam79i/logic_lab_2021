@@ -26,19 +26,59 @@
 
 module tb_seq_circuit ();
 
-reg clk;
-reg rst;
-reg a;
-reg b;
+	// Registers
+	reg rst;
+	reg clk;
+	reg a;
+	reg b;
+	// Output wires
+	wire y;
+	wire z;
 
-wire y;
-wire z;
+	// Instantiating Unit Under Test
+	seq_circuit uut (
+		.rst(rst), 
+		.clk(clk), 
+		.a(a), 
+		.b(b), 
+		.y(y), 
+		.z(z),
+	);
 
-	initial 
-		begin
-		
-		// write your code here
-		
+	// Building the clock generator
+	initial begin
+		clk = 1'b0;
+		forever begin
+				#40;
+				clk = ~clk;
+		end
+	end
+
+	// Testing
+	initial begin
+		rst = 0;
+		a = 0;
+		b = 0;
+		#80;
+		b = 1;
+		#40;
+		a = 1;
+		#80;
+		a = 0;
+		#80;
+		b = 0;
+		#40;
+		a = 1;
+		#120;
+		b = 1;
+		#40;
+		a = 0;
+		b = 0;
+		#120;
+		b = 1;
+		#40;
+		a = 1;
+		$finish;	
 	end
 
 endmodule
