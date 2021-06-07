@@ -34,19 +34,19 @@ module dflop (
 	reg qout, qbout;
 
 	// D-FF main code
-	initial begin
-		always @ (negedge clk or posedge rst)
+	always @ (negedge clk or posedge rst)
+	begin
 		if (rst == 1'b1) 
-			begin
+		begin
 			qout  <= 1'b0;
 			qbout <= 1'b1;
-			end
+		end
 		else
-			begin
+		begin
 			#5;
 			qout  <= din;
 			qbout <= ~din;
-			end
+		end
 	end
 
 endmodule
