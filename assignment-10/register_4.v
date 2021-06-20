@@ -6,32 +6,31 @@
 --  *******************************************************
 --  All Rights reserved (C) 2019-2020
 --  *******************************************************
---  Student ID  : 
---  Student Name: 
---  Student Mail: 
+--  Student ID  : 9829039	
+--  Student Name: Pouya Mohammadi
+--  Student Mail: pouyamohammadyirbu@gmail.com
 --  *******************************************************
 --  Additional Comments:
 --
+--	Teamate information:
+--	Mehran Aksari
+--	9831007
 --*/
 
-/*-----------------------------------------------------------
----  Module Name: Register 4 bit
----  Description: Lab 10 Part 1
------------------------------------------------------------*/
-`timescale 1 ns/1 ns
 
-module register (
+`timescale 1ns / 1ps
+module register_4(
 
 	input        rst ,
 	input        clk ,
 	input        en ,
 	input  [3:0] din ,
-	output [3:0] qout
+	output reg [3:0] qout
 );
-
-	/* write your code here */
-	
-	/* write your code here */
+	always @ (posedge clk) begin
+		if (en && ~rst) qout = din;
+		
+		if (rst) qout = 4'b0000;
+	end
 
 endmodule
-
