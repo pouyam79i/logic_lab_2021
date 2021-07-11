@@ -31,13 +31,14 @@ module fsm (
 	input  [3:0] pass_data ,	// Password or data input (4-bit)
 	output       en_left ,		// Used for even data 	
 	output       en_right ,		// Used for odd data
-	output [3:0] dout			// Output data (4-bit)
+	output [3:0] dout,			// Output data (4-bit),
+	output [3:0] state			// State output
 );
 
 	// Outputs as registers
-	reg en_left,
-	reg en_right,
-	reg [3:0] dout,
+	reg en_left;
+	reg en_right;
+	reg [3:0] dout;
 	// State of machine
 	reg [2:0] state;
 	// Constant pasword
@@ -51,12 +52,18 @@ module fsm (
 		dout = 0;			
 		state = 3'b000; 
 		// Define pasword here
-		password = 4'b1010;	 		
+		password = 4'b0101;	 		
 	end
 
 	// Sequential circuit
 	always @(posedge clk or posedge rst or negedge req) begin
-		if ((~req) || (rst)) begin
+		if (rst) begin
+			en_left = 0;
+			en_right = 0;
+			dout = 0;
+			state = 3'b000;
+		end
+		if (~req) begin
 			en_left = 0;
 			en_right = 0;
 			state = 3'b000;

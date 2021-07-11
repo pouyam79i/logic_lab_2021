@@ -41,10 +41,9 @@ module register (
 	// sequentioal_circuit of 4-bit register
 	always @ (posedge clk or posedge rst) begin
 		// Reset bits when rst = 1
-		else if (rst) qout = 4'b0000;
+		if (rst) qout = 4'b0000;
 		// Writes data when en = 1 and rst = 0
-		if (en) qout = din;	 		
-
+		else if (en) qout = din;	 		
 	end
 
 endmodule

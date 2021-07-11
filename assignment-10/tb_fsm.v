@@ -17,87 +17,90 @@
 --	9831007
 --*/
 
-/*-----------------------------------------------------------
----  Module Name: System Testbench
----  Description: Lab 10 Part 4
------------------------------------------------------------*/
+
 `timescale 1 ns/1 ns
 
-module tb_system ();
+module tb_fsm;
 
 	// Inputs
-	reg  rst ;
-	reg  clk ;
-	reg  req;
-	reg  confirm;
-	reg  [3:0] din ;
+	reg rst;
+	reg clk;
+	reg req;
+	reg confirm;
+	reg [3:0] pass_data;
 
 	// Outputs
-	wire [3:0] dout_left ;
-	wire [3:0] dout_right ;
+	wire en_left;
+	wire en_right;
+	wire [3:0] dout;
+	wire [2:0] state;
 
 	// Instantiate the Unit Under Test (UUT)
-	system uut (
-		.rst(rst), 
+	fsm uut (
+		.rst(rst),
 		.clk(clk), 
-		.req(req),
+		.req(req), 
 		.confirm(confirm), 
-		.din(din), 
-		.dout_left(dout_left), 
-		.dout_right(dout_right)
+		.pass_data(pass_data), 
+		.en_left(en_left), 
+		.en_right(en_right), 
+		.dout(dout),
+		.state(state)
 	);
-
-	// Clock generator
+	
 	initial begin
-		repeat(50)
+		clk = 1'b0;
+		forever begin
 		#100 clk = ~clk;
+		end
 	end
 
 	initial begin
 		// Initialize Inputs
-		rst = 0;
-		clk = 0;
+		rst = 1; 
 		req = 0;
 		confirm = 0;
-		din = 0;
-
+		pass_data = 0;
 		// Wait 100 ns for global reset to finish
-		#50
+      	#250;
+		rst = 0;
+		#200;
 		req = 1;
-		#200
-		din = 4'b0011;
-		#400
+		#200;
+		pass_data = 4'b0111;
+		#400;
+		confirm = 1;
+		#100;
 		confirm = 0;
-		#100
+		pass_data = 4'b0101;
+		#200;
 		confirm = 1;
-		din = 4'b0101;
-		#200
-		confirm = 1;
-		#200
+		#200;
+		req = 0;
+		confirm = 0;
+		#300;
 		req = 1;
-		confirm = 0;
-		#300
-		req = 1;
-		#200 
-		din = 4'b0101;
-		#200
+		#200;
+		pass_data = 4'b0101;
+		#200;
 		confirm = 1;
-		#200
+		#200;
 		confirm = 0;
-		#200 
-		din = 4'b0100;
-		#300
+		#200;  
+		pass_data = 4'b0110;
+		#200;
 		confirm = 1;
-		#500
+		#500;
 		rst = 1;
-		#200
-		confirm = 0;
-		req = 0; 
-		#500 
+		#200;
 		rst = 0;
 		req = 1;
-		#200
-		$finish; 
-	end
-
+		#100;
+		pass_data = 4'b1011;
+		#100;
+		confirm = 1;
+		#200; 
+		$finish;     
+	end 
+	
 endmodule
