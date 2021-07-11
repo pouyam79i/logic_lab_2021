@@ -17,48 +17,76 @@
 --	9831007
 --*/
 
+/*-----------------------------------------------------------
+---  Module Name: FSM
+---  Description: Lab 10 Part 2
+-----------------------------------------------------------*/
+`timescale 1 ns/1 ns
 
-`timescale 1ns / 1ps
-module FSM (
-	input            rst ,
-	input            req ,
-	input            clk ,
-	input            confirm ,
-	input      [3:0] pass_data ,
-	output reg       en_left ,
-	output reg       en_right ,
-	output reg [3:0] dout,
-	output reg [2:0] state 
+module fsm (
+	input        rst ,			// Reset 
+	input        clk ,			// Clock
+	input        confirm ,		// Confirm value
+	input  [3:0] pass_data ,	// Password or data input (4-bit)
+	output       en_left ,		// Used for even data 	
+	output       en_right ,		// Used for odd data
+	output [3:0] dout			// Output data (4-bit)
 );
 
-reg [2:0] present = 3'b000;
-wire [3:0] pass = 4'b0101;
+	// Outputs as registers
+	reg en_left,
+	reg en_right,
+	reg [3:0] dout,
+	// State of machine
+	reg [2:0] state;
+	// Constant pasword
+	reg [3:0] password;
 
-always @( posedge clk ) begin
-	if (req && ~rst ) begin
-		case(present) 
-			3'b000 : present = 3'b001;
-			3'b001 : if (confirm) begin
-							present = ((pass == pass_data)? 3'b101 : 3'b111 );
-						end
-			3'b101 : if (confirm) begin
-							if (pass_data[0] == 0) en_right = 1'b1;
-							else en_left = 1'b1;
-							dout = pass_data;
-							present = 3'b110;
-						end
-		endcase
-	end
-	else begin
-		present = 3'b000;
-		en_right = 0;
+	// Initialing to default values
+	initial begin
+		// Default values
 		en_left = 0;
-		dout = 4'b0000;
+		en_right = 0;
+		dout = 0;			
+		state = 3'b000; 
+		// Define pasword here
+		password = 4'b1010;	 		
 	end
-	state = present;		
-end
-	
-	
 
+	// Sequential circuit
+	always @(posedge clk or negedge rst) begin
+		if (~rst) begin
+			en_left = 0;
+			en_right = 0;
+			state = 3'b000;
+		end
+		else begin
+			if(state == 3'b000) begin
+				state = 3'b001;
+			end
+			else if (state == 3'b001) begin
+				if(confirm) begin
+					if(pass_data == password) state = 3'b101;
+					else state = 3'b111;
+				end
+			end
+			else if (state == 3'b101) begin
+				if(confirm) begin
+					dout = pass_data;
+					state = 3'b110;
+					// Even Data
+					if(pass_data[0]) begin	
+						en_left = 1;
+						en_right = 0;
+					end
+					// Odd data
+					else begin
+						en_left = 0;
+						en_right = 1;
+					end
+				end
+			end
+		end
+	end
 
 endmodule
