@@ -26,6 +26,7 @@
 module fsm (
 	input        rst ,			// Reset 
 	input        clk ,			// Clock
+	input 		 req,			// Request
 	input        confirm ,		// Confirm value
 	input  [3:0] pass_data ,	// Password or data input (4-bit)
 	output       en_left ,		// Used for even data 	
@@ -54,8 +55,8 @@ module fsm (
 	end
 
 	// Sequential circuit
-	always @(posedge clk or negedge rst) begin
-		if (~rst) begin
+	always @(posedge clk or posedge rst or negedge req) begin
+		if ((~req) || (rst)) begin
 			en_left = 0;
 			en_right = 0;
 			state = 3'b000;

@@ -18,33 +18,30 @@
 --*/
 
 /*-----------------------------------------------------------
----  Module Name: Register 4 bit
----  Description: Lab 10 Part 1
+---  Module Name: Sequential System
+---  Description: Lab 10 Part 3
 -----------------------------------------------------------*/
 `timescale 1 ns/1 ns
 
-module register (
-	input        rst ,
-	input        clk ,
-	input        en ,
-	input  [3:0] din ,
-	output [3:0] qout
+module system (
+	input  rst,				 // Reset
+	input  clk,				 // Clock
+	input  req,	             // Request	
+	input  confirm,			 // Confirm
+	input  [3:0] din ,		 // Data input
+	output [3:0] dout_left , // Even data output
+	output [3:0] dout_right	 // Odd data output
 );
-	
-	reg [3:0] qout;
 
-	// Setting default values
-	initial begin
-		qout = 0;
-	end
+	// Wires
+	wire en_right;
+	wire en_left;
+	wire [3:0] doutFSM;
+	wire [2:0] state;
 
-	// sequentioal_circuit of 4-bit register
-	always @ (posedge clk or posedge rst) begin
-		// Reset bits when rst = 1
-		else if (rst) qout = 4'b0000;
-		// Writes data when en = 1 and rst = 0
-		if (en) qout = din;	 		
-
-	end
+	// Modules
+	fsm fsmModule(rst, clk, req, confirm, din, en_left, en_right, doutFSM);	// FSM module
+	register rgLeft(rst, clk, en_left, doutFSM, dout_left);				// Even data container
+	register rgRight(rst, clk, en_right, doutFSM, dout_right);			// Odd data container
 
 endmodule
