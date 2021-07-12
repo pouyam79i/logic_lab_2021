@@ -49,54 +49,55 @@ module tb_system ();
 
 	// Clock generator
 	initial begin
-		repeat(50)
-		#100 clk = ~clk;
+		clk = 0;
+		forever begin
+		#5 clk = ~clk;
+		end
 	end
 
 	initial begin
 		// Initialize Inputs
-		rst = 0;
-		clk = 0;
+		rst = 1;
 		req = 0;
 		confirm = 0;
 		din = 0;
 
 		// Wait 100 ns for global reset to finish
-		#50
-		req = 1;
-		#200
+		#25
+		rst = 0;
+		#20
 		din = 4'b0011;
-		#400
+		#20
 		confirm = 0;
-		#100
+		#30
 		confirm = 1;
 		din = 4'b0101;
-		#200
+		#20
 		confirm = 1;
-		#200
+		#20
 		req = 1;
 		confirm = 0;
-		#300
+		#30
 		req = 1;
-		#200 
+		#20 
 		din = 4'b0101;
-		#200
+		#20
 		confirm = 1;
-		#200
+		#20
 		confirm = 0;
-		#200 
+		#20 
 		din = 4'b0100;
-		#300
+		#30
 		confirm = 1;
-		#500
+		#50
 		rst = 1;
-		#200
+		#20
 		confirm = 0;
 		req = 0; 
-		#500 
+		#50 
 		rst = 0;
 		req = 1;
-		#200
+		#20
 		$finish; 
 	end
 

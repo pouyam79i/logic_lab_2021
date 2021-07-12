@@ -82,15 +82,15 @@ module fsm (
 				if(confirm) begin
 					dout = pass_data;
 					state = 3'b110;
-					// Even Data
-					if(pass_data[0]) begin	
-						en_left = 1;
-						en_right = 0;
-					end
 					// Odd data
-					else begin
+					if(pass_data[0]) begin	
 						en_left = 0;
 						en_right = 1;
+					end
+					// Even data
+					else begin
+						en_left = 1;
+						en_right = 0;
 					end
 				end
 			end
